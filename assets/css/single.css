@@ -1,0 +1,123 @@
+/* BANNER */
+#single-empreendimento #banner .wrapper {
+  position: relative;
+  border-radius: 0 0 48px 48px;
+  overflow: hidden;
+}
+#single-empreendimento #banner .wrapper .container-custom-sm {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  height: 100%;
+}
+#single-empreendimento #banner .wrapper .container-custom-sm .forms {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  padding: 32px;
+  gap: 24px;
+  border-radius: 24px;
+  background: #fff;
+}
+#single-empreendimento #banner .wrapper .container-custom-sm .forms h2 {
+  font-size: 32px;
+  font-weight: 400;
+}
+#single-empreendimento #banner .wrapper .container-custom-sm .forms input {
+  font-size: 24px;
+}
+#single-empreendimento #banner .wrapper .container-custom-sm .forms > p {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#single-empreendimento #banner .wrapper .container-custom-sm .wpcf7-response-output {
+  margin: 8px 0 0;
+  padding: 8px 16px;
+  border-radius: 24px;
+  border: none;
+  font-size: 14px !important;
+  text-align: center;
+  color: #fff;
+  background: var(--clr-red);
+}
+#single-empreendimento #banner .wrapper .container-custom-sm .forms > p input {
+  max-width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  border: none;
+  background: #F2F2F2;
+}
+#single-empreendimento #banner .wrapper .forms .wpcf7-submit {
+  display: flex;
+  padding: 16px 32px;
+  width: auto;
+  border-radius: 32px;
+  border: none;
+  font-size: 20px !important;
+  color: #fff;
+  background: var(--clr-primary);
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+}
+#single-empreendimento #banner .wrapper .forms .wpcf7-submit:hover {
+  background: #000;
+}
+#single-empreendimento #banner .wrapper .forms .btn-wrapper p {
+  display: flex;
+  align-items: center;
+}
+#single-empreendimento #banner .wrapper .forms .wpcf7-not-valid-tip {
+  font-size: 14px !important;
+  color: var(--clr-red);
+}
+#single-empreendimento #banner .wrapper picture {
+  display: flex;
+  overflow: hidden;
+  border-radius: 0 0 24px 24px;
+}
+@media (min-width: 2000px) {
+  #single-empreendimento #banner {
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+}
+/* END BANNER */
+/* TOUR 360 */
+#single-empreendimento #tour-360 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+#single-empreendimento #tour-360 .title {
+  font-weight: 400;
+}
+#single-empreendimento #tour-360 .wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 18/7;
+}
+#single-empreendimento #tour-360 .wrapper img {
+  position: absolute;
+  z-index: 1;
+  right: 32px;
+  top: 32px;
+  pointer-events: none;
+}
+#single-empreendimento #tour-360 iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+/* END TOUR 360 */
