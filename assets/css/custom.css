@@ -20,25 +20,25 @@
 }
 body {
   overflow-x: hidden;
-  font-size: 20px;
+  font-size: 18px;
 }
 h1 {
-  font-size: calc(2rem + 1.5vw);
+  font-size: 2.5rem;
 }
 h2 {
-  font-size: calc(1.8rem + 1.5vw);
+  font-size: 1.75;
 }
 h3 {
-  font-size: calc(1.6rem + 1.5vw);
+  font-size: 1.5rem;
 }
 h4 {
-  font-size: calc(1.4rem + 1.5vw);
+  font-size: 1.25rem;
 }
 h5 {
-  font-size: calc(1.2rem + 1.5vw);
+  font-size: 1rem;
 }
 h6 {
-  font-size: calc(1rem + 1.5vw);
+  font-size: 0.75rem;
 }
 /* CUSTOM CLASSES */
 .container-custom {
@@ -63,6 +63,19 @@ h6 {
 }
 .btn-blue:hover {
   background: var(--clr-primary-hover);
+}
+/* SELO */
+.selo-lancamentos {
+  background-color: #BD0000;
+}
+.selo-construcao {
+  background-color: #D87E00;
+}
+.selo-pronto {
+  background-color: #04B052;
+}
+.selo-entregue {
+  background-color: #1A539E;
 }
 /* LOADER */
 body:not(.loaded) {

@@ -1,5 +1,10 @@
 <?php
 get_header();
+// Carregar CSS e JS
+if (function_exists('enqueue_single_empreendimento')) {
+  enqueue_single_empreendimento();
+}
+
 // Primarios
 $banner = get_field('banner');
 $infos = get_field('informacoes');
