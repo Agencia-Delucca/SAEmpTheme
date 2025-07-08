@@ -21,13 +21,19 @@
 <body <?php body_class(); ?>>
   <?php get_template_part('template-parts/loader'); ?>
 
-  <nav>
-    <?php
-    wp_nav_menu(array(
-      'theme_location' => 'principal',
-      'menu_class'     => 'header-menu text-uppercase',
-      'container'      => 'div',
-      'container_class' => 'header-nav col-6',
-    ));
-    ?>
+  <nav class="navbar__header">
+    <div class="container-custom">
+      <a href="<?php echo home_url(); ?>" class="logo">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo.svg" alt="Logo">
+      </a>
+      <?php
+      wp_nav_menu(array(
+        'theme_location' => 'principal',
+        'walker' => new Walker_Nav_Menu_Custom(),
+        'menu_class'     => 'header-menu text-uppercase',
+        'container'      => 'div',
+        'container_class' => 'header-nav col-6',
+      ));
+      ?>
+    </div>
   </nav>

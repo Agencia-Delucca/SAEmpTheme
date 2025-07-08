@@ -15,6 +15,8 @@ $plantas = get_field('plantas');
 $tour_360 = $infos['tour_360'];
 ?>
 
+<?php get_template_part('template-parts/breadcrumb'); ?>
+
 <div id="single-empreendimento">
   <?php if ($banner) :
     $imagem_desk = $banner['img_desk'];
@@ -38,7 +40,7 @@ $tour_360 = $infos['tour_360'];
   <?php if ($tour_360) : ?>
     <div class="container-custom" id="tour-360">
       <h2 class="title">
-        Faça um Tuor Virtual
+        Faça um Tour Virtual
       </h2>
       <div class="wrapper">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icones/3d.svg" alt="Perspectiva 3D">
