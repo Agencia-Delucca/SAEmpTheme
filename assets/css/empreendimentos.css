@@ -1,8 +1,13 @@
+#masterEmpreendimentos {
+  overflow: hidden;
+  background: #F4F4F4;
+  padding-top: 100px;
+}
 /* FILTROS */
 #masterEmpreendimentos .filtros {
   display: flex;
   flex-direction: column;
-  margin: 100px 0 64px;
+  margin: 0 0 64px;
   gap: 32px;
   justify-content: center;
   align-items: center;
