@@ -1,15 +1,19 @@
 /* BANNER */
 #single-empreendimento #banner .wrapper {
   position: relative;
-  border-radius: 0 0 48px 48px;
   overflow: hidden;
+  min-height: 750px;
+  border-radius: 0 0 48px 48px;
 }
 #single-empreendimento #banner .wrapper .container-custom-sm {
   position: absolute;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: end;
   height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #single-empreendimento #banner .wrapper .container-custom-sm .forms {
   display: flex;
@@ -73,9 +77,16 @@
   color: var(--clr-red);
 }
 #single-empreendimento #banner .wrapper picture {
+  position: absolute;
+  z-index: 0;
   display: flex;
   overflow: hidden;
-  border-radius: 0 0 24px 24px;
+  height: 100%;
+  width: 100%;
+}
+#single-empreendimento #banner .wrapper picture img {
+  width: 100%;
+  max-width: 100%;
 }
 @media (min-width: 2000px) {
   #single-empreendimento #banner {
@@ -84,6 +95,96 @@
   }
 }
 /* END BANNER */
+/* INFORMAÇÕES */
+#single-empreendimento #infos {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#single-empreendimento #infos .wrapper {
+  display: flex;
+  gap: 16px;
+}
+#single-empreendimento #infos .wrapper .left {
+  width: 100%;
+  max-width: 60%;
+}
+#single-empreendimento #infos .wrapper .left .img__wrapper {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  height: 100%;
+  border-radius: 32px;
+}
+#single-empreendimento #infos .wrapper .left .img__wrapper img:hover {
+  transform: scale(1.05);
+}
+#single-empreendimento #infos .wrapper .right {
+  width: 100%;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+#single-empreendimento #infos .wrapper .right h1 {
+  font-weight: 400;
+}
+#single-empreendimento #infos .wrapper .right .content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+#single-empreendimento #infos .wrapper .right .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 32px;
+  border-radius: 16px;
+  flex-grow: 1;
+  background: #fff;
+}
+#single-empreendimento #infos .wrapper .right .item img {
+  max-width: 32px;
+}
+#single-empreendimento #infos .wrapper .right .item.infos {
+  justify-content: start;
+  width: 100%;
+  max-width: calc(60% - 8px);
+  padding: 64px 32px;
+}
+#single-empreendimento #infos .wrapper .right .item.infos .destaque__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+#single-empreendimento #infos .wrapper .right .item.infos .destaque {
+  display: flex;
+  gap: 16px;
+}
+#single-empreendimento #infos .wrapper .right .item.infos .destaque .imagem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
+#single-empreendimento #infos .wrapper .right .item.infos .destaque .imagem img {
+  max-width: 100%;
+  height: 100%;
+}
+#single-empreendimento #infos .wrapper .right .item.infos .destaque .texto {
+  display: flex;
+  align-items: center;
+}
+#single-empreendimento #infos .wrapper .right .item.text {
+  flex-direction: column;
+  width: 100%;
+  max-width: calc(40% - 8px);
+  padding: 64px 32px;
+}
+#single-empreendimento #infos .wrapper .right .item.infos .destaque:first-of-type {
+  font-weight: 700;
+}
 /* TOUR 360 */
 #single-empreendimento #tour-360 {
   display: flex;
@@ -121,3 +222,60 @@
   height: 100%;
 }
 /* END TOUR 360 */
+.swiper {
+  margin-top: 50px;
+}
+.swiper-wrapper {
+  overflow: hidden;
+  height: 600px;
+  border-radius: 32px;
+}
+.swiper-slide.destaque {
+  position: relative;
+  height: 100%;
+}
+.swiper-slide.destaque img {
+  width: 100%;
+  display: block;
+}
+
+.swiper-slide.duplo .duas-imagens {
+  display: flex;
+  gap: 16px;
+  height: 100%;
+  background: #F4F4F4;
+}
+
+.img-bloco {
+  flex: 1;
+  position: relative;
+  height: 100%;
+}
+
+.img-bloco img {
+  width: 100%;
+  display: block;
+  border-radius: 32px;
+}
+
+.legenda {
+  position: absolute;
+  z-index: 1;
+  top: 32px;
+  left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 250px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #fff;
+  color: #000;
+}
+.legenda h3 {
+  font-size: 20px;
+  font-weight: 400;
+}
+.legenda p {
+  font-size: 16px;
+}

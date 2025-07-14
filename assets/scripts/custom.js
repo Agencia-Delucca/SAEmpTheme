@@ -3,6 +3,16 @@ window.addEventListener("load", function () {
   document.body.classList.add("loaded");
 });
 
+// Ancoragem com scroll suave
+function scrollToId(id) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+scrollToId();
+
 // Barra de navegação
 document.addEventListener("DOMContentLoaded", function () {
   let lastScrollTop = 0;
@@ -34,6 +44,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
       link.parentNode.replaceChild(div, link);
     });
+
+  function ajustarMarginLeft() {
+    const logo = document.querySelector(".navbar__header .logo");
+    const megaMenuContents = document.querySelectorAll(
+      ".megamenu-content .megamenu-left"
+    );
+
+    if (logo && megaMenuContents.length > 0) {
+      const logoWidth = logo.offsetWidth;
+      const margemTotal = logoWidth + 48;
+
+      megaMenuContents.forEach((menu) => {
+        menu.style.marginLeft = `${margemTotal}px`;
+      });
+    }
+  }
+  ajustarMarginLeft();
+  window.addEventListener("resize", ajustarMarginLeft);
 });
 
 // Ancoragem com scroll suave
@@ -47,36 +75,58 @@ function scrollToId(id) {
 scrollToId();
 
 // Swipers
-const topoBannerHome = new Swiper("#home .topo", {
-  loop: true,
-  autoplay: {
-    delay: 7000,
-    disableOnInteraction: false,
-  },
-  effect: "fade",
-  pagination: {
-    el: "#home .swiper-pagination",
-    clickable: true,
-    renderBullet: function (index, className) {
-      return (
-        '<span class="' + className + '">' + bulletLabels[index] + "</span>"
-      );
+document.addEventListener("DOMContentLoaded", function () {
+  const topoBannerHome = new Swiper("#home .topo", {
+    loop: true,
+    autoplay: {
+      delay: 7000,
+      disableOnInteraction: false,
     },
-  },
-  on: {
-    autoplayTimeLeft(s, time, progress) {
-      const bullets = document.querySelectorAll(
-        "#home .topo .swiper-pagination-bullet"
-      );
-      bullets.forEach((bullet, index) => {
-        if (index === s.realIndex) {
-          bullet.style.background = `linear-gradient(to left, rgba(50, 50, 50, 0.5) ${
-            progress * 100
-          }%, rgba(0, 0, 0, 0.8) ${progress * 100}%)`;
-        } else {
-          bullet.style.background = "rgba(50, 50, 50, 0.5)";
-        }
-      });
+    effect: "fade",
+    pagination: {
+      el: "#home .swiper-pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        return (
+          '<span class="' + className + '">' + bulletLabels[index] + "</span>"
+        );
+      },
     },
+    on: {
+      autoplayTimeLeft(s, time, progress) {
+        const bullets = document.querySelectorAll(
+          "#home .topo .swiper-pagination-bullet"
+        );
+        bullets.forEach((bullet, index) => {
+          if (index === s.realIndex) {
+            bullet.style.background = `linear-gradient(to left, rgba(50, 50, 50, 0.5) ${
+              progress * 100
+            }%, rgba(0, 0, 0, 0.8) ${progress * 100}%)`;
+          } else {
+            bullet.style.background = "rgba(50, 50, 50, 0.5)";
+          }
+        });
+      },
+    },
+  });
+
+  const galeriaSlider = new Swiper("#single-empreendimento #galeria .swiper", {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 32,
+    effect: "fade",
+    navigation: {
+      nextEl: "#single-empreendimento #galeria .swiper-button-next",
+      prevEl: "#single-empreendimento #galeria .swiper-button-prev",
+    }
+  });
+});
+
+// Fancybox
+Fancybox.bind("[data-fancybox]", {
+  animated: true,
+  zoom: true,
+  Image: {
+    zoom: true,
   },
 });

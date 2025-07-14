@@ -8,11 +8,14 @@ if (function_exists('enqueue_single_empreendimento')) {
 // Primarios
 $banner = get_field('banner');
 $infos = get_field('informacoes');
-$galeira = get_field('galeria');
+$galeria = get_field('galeria');
 $plantas = get_field('plantas');
+$obras = get_field('obras');
 
 // Secundarios
 $tour_360 = $infos['tour_360'];
+$destaques = $infos['destaques'];
+$descricao = $infos['texto'];
 ?>
 
 <?php get_template_part('template-parts/breadcrumb'); ?>
@@ -37,15 +40,140 @@ $tour_360 = $infos['tour_360'];
     </div>
   <?php endif; ?>
 
+  <div class="container-custom-sm" id="infos">
+    <div class="wrapper">
+      <div class="item left">
+        <div class="img__wrapper">
+          <img src="<?php the_post_thumbnail_url(); ?>" alt="Imagem de destaque do empreendimento <?php the_title(); ?>" class="img-full">
+        </div>
+      </div>
+      <div class="item right">
+        <h1><?php the_title(); ?></h1>
+        <div class="content">
+          <?php if ($tour_360) : ?>
+            <div class="item anchor" onclick="scrollToId('tour-360')">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icones/3d-black.svg" alt="Setas indicando item 3D">
+              Tour 360º
+            </div>
+          <?php endif; ?>
+          <?php if ($obras) : ?>
+            <div class="item anchor" onclick="scrollToId('obras')">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icones/obras.svg" alt="Obras">
+              Acompanhe a obra
+            </div>
+          <?php endif; ?>
+          <div class="item infos">
+            <?php
+            if (have_rows('informacoes_destaques')) : ?>
+              <div class="destaque__wrapper">
+                <?php while (have_rows('informacoes_destaques')) : the_row();
+                  $item = get_sub_field('Item');
+                  $icone = $item['icone'] ?? '';
+                  $texto = $item['texto'] ?? '';
+                  if ($icone && $texto) :
+                    $icone_url = get_icone_svg($icone);
+                ?>
+                    <?php if ($icone_url): ?>
+                      <div class="destaque">
+                        <div class="imagem">
+                          <img src="<?php echo esc_url($icone_url); ?>" alt="<?php echo esc_attr($icone); ?>" />
+                        </div>
+                        <span class="texto"><?php echo esc_html($texto); ?></span>
+                      </div>
+                    <?php endif; ?>
+                <?php endif;
+                endwhile; ?>
+              </div>
+            <?php endif; ?>
+          </div>
+          <div class="item text">
+            <?php echo $descricao; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?php if ($galeria) : ?>
+    <div class="container-custom-sm" id="galeria">
+      <h2 class="title">
+        <?php echo esc_html($galeria['tipo']); ?>
+      </h2>
+
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <?php
+          $comuns = [];
+
+          foreach ($galeria['slide'] as $item) {
+            $imagem = $item['imagem'];
+            $slots = $item['slots'];
+            $texto = $item['texto'];
+
+            if ($slots == '2') {
+              echo '<a href="' . esc_url($imagem) . '" data-fancybox="gallery" class="swiper-slide destaque">';
+              echo '<img src="' . esc_url($imagem) . '" alt="Fotos do empreendimento" class="img-full">';
+              if ($texto) echo '<div class="legenda">' . $texto . '</div>';
+              echo '</a>';
+            } elseif ($slots == '1') {
+              $comuns[] = ['imagem' => $imagem, 'texto' => $texto];
+            }
+          }
+
+          // Renderiza pares de imagens comuns (slots = 1)
+          for ($i = 0; $i < count($comuns); $i += 2) {
+            $img1 = $comuns[$i];
+            $img2 = isset($comuns[$i + 1]) ? $comuns[$i + 1] : null;
+
+            echo '<div class="swiper-slide duplo">';
+            echo '<div class="duas-imagens">';
+
+            // Imagem 1
+            echo '<a href="' . esc_url($img1['imagem']) . '" data-fancybox="gallery" class="img-bloco">';
+            echo '<img src="' . esc_url($img1['imagem']) . '" alt="Fotos do empreendimento" class="img-full">';
+            if ($img1['texto']) echo '<div class="legenda">' . $img1['texto'] . '</div>';
+            echo '</a>';
+
+            // Imagem 2 (se existir)
+            if ($img2) {
+              echo '<a href="' . esc_url($img2['imagem']) . '" data-fancybox="gallery" class="img-bloco">';
+              echo '<img src="' . esc_url($img2['imagem']) . '" alt="Fotos do empreendimento" class="img-full">';
+              if ($img2['texto']) echo '<div class="legenda">' . $img2['texto'] . '</div>';
+              echo '</a>';
+            }
+
+            echo '</div></div>';
+          }
+          ?>
+        </div>
+
+        <div class="swiper-button-wrapper">
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
+
+
   <?php if ($tour_360) : ?>
     <div class="container-custom" id="tour-360">
       <h2 class="title">
         Faça um Tour Virtual
       </h2>
-      <div class="wrapper">
+      <a href="<?php echo $tour_360; ?>" class="wrapper" data-fancybox data-type="iframe" style="background: center / cover no-repeat url(<?php echo get_template_directory_uri(); ?>/assets/imgs/lausanne_teste_tour.jpg);">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icones/3d.svg" alt="Perspectiva 3D">
+      </a>
+      <!-- <div class="wrapper">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icones/3d.svg" alt="Perspectiva 3D">
         <iframe src="<?php echo $tour_360; ?>" frameborder="0" loading="lazy"></iframe>
-      </div>
+      </div> -->
+    </div>
+  <?php endif; ?>
+
+  <?php if ($obras) : ?>
+    <div class="container-custom" id="obras">
+
     </div>
   <?php endif; ?>
 </div>
