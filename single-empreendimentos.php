@@ -155,6 +155,95 @@ $descricao = $infos['texto'];
     </div>
   <?php endif; ?>
 
+  <?php if ($plantas) : ?>
+    <div class="container-custom-sm" id="plantas">
+      <h2 class="title">Planta baixa</h2>
+      <section class="plantas">
+        <?php if (have_rows('plantas_tipos')): ?>
+
+          <!-- Coluna da esquerda (Legendas) -->
+          <div class="left">
+            <?php $j = 0;
+            while (have_rows('plantas_tipos')): the_row();
+              $legenda = get_sub_field('legenda'); ?>
+              <?php if ($legenda): ?>
+                <div class="planta-legenda <?php echo $j === 0 ? 'active' : ''; ?>" id="planta-legenda-<?php echo $j; ?>">
+                  <h3>Legenda</h3>
+                  <ol>
+                    <?php foreach ($legenda as $linha): ?>
+                      <li><?php echo esc_html($linha['linha']); ?></li>
+                    <?php endforeach; ?>
+                  </ol>
+                </div>
+              <?php endif; ?>
+            <?php $j++;
+            endwhile; ?>
+          </div>
+
+          <!-- Coluna da direita -->
+          <div class="right">
+
+            <!-- Botões -->
+            <div class="plantas__botoes">
+              <?php $i = 0;
+              while (have_rows('plantas_tipos')): the_row();
+                $tipo = get_sub_field('tipo'); ?>
+                <button class="planta-btn <?php echo $i === 0 ? 'active' : ''; ?>"
+                  data-planta="<?php echo $i; ?>">
+                  <?php echo esc_html($tipo); ?>
+                </button>
+              <?php $i++;
+              endwhile; ?>
+            </div>
+
+            <!-- Conteúdo das Plantas -->
+            <div class="plantas__conteudo">
+              <?php $k = 0;
+              while (have_rows('plantas_tipos')): the_row();
+                $imagem    = get_sub_field('imagem');
+                $destaques = get_sub_field('destaques'); ?>
+
+                <div class="planta-item <?php echo $k === 0 ? 'active' : ''; ?>" id="planta-item-<?php echo $k; ?>">
+
+                  <!-- Imagem -->
+                  <?php if ($imagem): ?>
+                    <a class="planta-imagem" data-fancybox href="<?php echo esc_url($imagem['url']); ?>">
+                      <img src="<?php echo esc_url($imagem['url']); ?>" alt="<?php echo esc_attr($imagem['alt']); ?>">
+                    </a>
+                  <?php endif; ?>
+
+                  <!-- Destaques -->
+                  <?php if ($destaques): ?>
+                    <div class="planta-destaques">
+                      <?php foreach ($destaques as $d):
+                        $item  = $d['Item'];
+                        $icone = $item['icone'] ?? '';
+                        $texto = $item['texto'] ?? '';
+                        if ($icone && $texto) :
+                          $icone_url = get_icone_svg($icone); ?>
+                          <?php if ($icone_url): ?>
+                            <div class="destaque">
+                              <div class="imagem">
+                                <img src="<?php echo esc_url($icone_url); ?>" alt="<?php echo esc_attr($icone); ?>" />
+                              </div>
+                              <span class="texto"><?php echo esc_html($texto); ?></span>
+                            </div>
+                          <?php endif; ?>
+                        <?php endif; ?>
+                      <?php endforeach; ?>
+                    </div>
+                  <?php endif; ?>
+
+                </div>
+              <?php $k++;
+              endwhile; ?>
+            </div>
+          </div>
+        <?php endif; ?>
+      </section>
+    </div>
+  <?php endif; ?>
+
 
   <?php if ($tour_360) : ?>
     <div class="container-custom" id="tour-360">
@@ -164,10 +253,6 @@ $descricao = $infos['texto'];
       <a href="<?php echo $tour_360; ?>" class="wrapper" data-fancybox data-type="iframe" style="background: center / cover no-repeat url(<?php echo get_template_directory_uri(); ?>/assets/imgs/lausanne_teste_tour.jpg);">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icones/3d.svg" alt="Perspectiva 3D">
       </a>
-      <!-- <div class="wrapper">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icones/3d.svg" alt="Perspectiva 3D">
-        <iframe src="<?php echo $tour_360; ?>" frameborder="0" loading="lazy"></iframe>
-      </div> -->
     </div>
   <?php endif; ?>
 
@@ -177,5 +262,29 @@ $descricao = $infos['texto'];
     </div>
   <?php endif; ?>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const botoes = document.querySelectorAll(".planta-btn");
+    const plantas = document.querySelectorAll(".planta-item");
+    const legendas = document.querySelectorAll(".planta-legenda");
+
+    botoes.forEach(botao => {
+      botao.addEventListener("click", function() {
+        const index = this.getAttribute("data-planta");
+
+        // limpa tudo
+        botoes.forEach(b => b.classList.remove("active"));
+        plantas.forEach(p => p.classList.remove("active"));
+        legendas.forEach(l => l.classList.remove("active"));
+
+        // ativa botão + planta + legenda correspondentes
+        this.classList.add("active");
+        document.getElementById("planta-item-" + index).classList.add("active");
+        document.getElementById("planta-legenda-" + index).classList.add("active");
+      });
+    });
+  });
+</script>
 
 <?php get_footer(); ?>

@@ -64,16 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", ajustarMarginLeft);
 });
 
-// Ancoragem com scroll suave
-function scrollToId(id) {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-}
-
-scrollToId();
-
 // Swipers
 document.addEventListener("DOMContentLoaded", function () {
   const topoBannerHome = new Swiper("#home .topo", {

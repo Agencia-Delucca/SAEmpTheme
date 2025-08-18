@@ -222,43 +222,39 @@
   height: 100%;
 }
 /* END TOUR 360 */
-.swiper {
+#single-empreendimento .swiper {
   margin-top: 50px;
 }
-.swiper-wrapper {
+#single-empreendimento .swiper-wrapper {
   overflow: hidden;
   height: 600px;
   border-radius: 32px;
 }
-.swiper-slide.destaque {
+#single-empreendimento .swiper-slide.destaque {
   position: relative;
   height: 100%;
 }
-.swiper-slide.destaque img {
+#single-empreendimento .swiper-slide.destaque img {
   width: 100%;
   display: block;
 }
-
-.swiper-slide.duplo .duas-imagens {
+#single-empreendimento .swiper-slide.duplo .duas-imagens {
   display: flex;
   gap: 16px;
   height: 100%;
   background: #F4F4F4;
 }
-
-.img-bloco {
+#single-empreendimento .img-bloco {
   flex: 1;
   position: relative;
   height: 100%;
 }
-
-.img-bloco img {
+#single-empreendimento .img-bloco img {
   width: 100%;
   display: block;
   border-radius: 32px;
 }
-
-.legenda {
+#single-empreendimento .legenda {
   position: absolute;
   z-index: 1;
   top: 32px;
@@ -272,10 +268,146 @@
   background: #fff;
   color: #000;
 }
-.legenda h3 {
+#single-empreendimento .legenda h3 {
   font-size: 20px;
   font-weight: 400;
 }
-.legenda p {
+#single-empreendimento .legenda p {
   font-size: 16px;
+}
+/* END GALERIA */
+/* PLANTAS */
+#single-empreendimento #plantas {
+  margin-top: 100px;
+}
+#single-empreendimento #plantas h2 {
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+#single-empreendimento .plantas {
+  display: flex;
+  gap: 32px;
+}
+#single-empreendimento .planta-legenda,
+#single-empreendimento .planta-item {
+  display: none;
+}
+#single-empreendimento .planta-legenda.active,
+#single-empreendimento .planta-item.active {
+  display: block;
+}
+#single-empreendimento .left {
+  width: 100%;
+  max-width: 364px;
+}
+#single-empreendimento .planta-legenda {
+  height: 100%;
+  padding: 48px 32px;
+  border-radius: 16px;
+  background: #fff;
+}
+@counter-style numeric-list {
+  system: cyclic;
+  symbols: numeric;
+}
+#single-empreendimento .planta-legenda ol {
+  counter-reset: numeric-list;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #000;
+}
+#single-empreendimento .planta-legenda ol li::before {
+  counter-increment: numeric-list;
+  content: counter(numeric-list) " | ";
+}
+#single-empreendimento .right {
+  position: relative;
+  flex-grow: 1;
+}
+#single-empreendimento .plantas__botoes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 16px 16px 0;
+  border-radius: 0 0 16px 0;
+  background: #F4F4F4;
+  z-index: 1;
+}
+#single-empreendimento .plantas__botoes:before {
+  bottom: -24px;
+  left: 0;
+  transform: scale(-1, 1);
+}
+#single-empreendimento .plantas__botoes:after {
+  top: 0;
+  right: -24px;
+  transform: scale(-1, 1);
+}
+#single-empreendimento .plantas__botoes:before,
+#single-empreendimento .plantas__botoes:after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+  background-image: url(../imgs/corner-f4.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#single-empreendimento .plantas__botoes button {
+  padding: 8px 16px;
+  border-radius: 32px;
+  border: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #0000004D;
+  transition: background .3s ease-in-out;
+  cursor: pointer;
+}
+#single-empreendimento .plantas__botoes button.active {
+  background: #000000CC;
+}
+#single-empreendimento .right .planta-item .planta-imagem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 98px 32px 40px;
+  border-radius: 16px;
+  background: #fff;
+}
+#single-empreendimento .right .planta-item .planta-imagem img {
+  max-width: 100%;
+}
+#single-empreendimento .right .planta-item .planta-destaques {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 16px;
+  margin-top: 32px;
+  border-radius: 16px;
+  background: #fff;
+}
+#single-empreendimento .right .planta-item .planta-destaques .destaque {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+#single-empreendimento .right .planta-item .planta-destaques .imagem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 100%;
+  background: #F4F4F4;
 }
