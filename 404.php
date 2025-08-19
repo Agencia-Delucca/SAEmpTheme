@@ -35,6 +35,11 @@
     border-radius: 40px;
     background: #fff;
     color: var(--clr-primary);
+    transition: all 0.3s ease;
+  }
+  #page404 .btn:hover {
+    background: var(--clr-primary);
+    color: #fff;
   }
 </style>
 <?php get_footer(); ?>
