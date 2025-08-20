@@ -307,6 +307,10 @@ body.loaded #site-loader {
 .navbar__header .megamenu-left a:hover::after {
   transform: translateX(8px);
 }
+.navbar__mobile,
+.navbar__header .menu-mobile {
+  display: none;
+}
 @media (max-width: 1024px) {
   body.active {
     overflow: hidden !important;
@@ -325,6 +329,7 @@ body.loaded #site-loader {
     display: flex;
   }
   .navbar__header .menu-mobile {
+    display: block;
     pointer-events: none;
     position: fixed;
     top: 0;
