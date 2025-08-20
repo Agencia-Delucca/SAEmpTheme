@@ -1,0 +1,111 @@
+#areacliente .topo picture {
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 1920/700;
+  border-radius: 0 0 50px 50px;
+}
+#areacliente .topo picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 1023px) {
+  #areacliente .topo picture {
+    aspect-ratio: auto;
+  }
+}
+/* Bloco 1 */
+#areacliente .bloco-1 {
+  padding: 100px 0 64px;
+  background: linear-gradient(0deg, #EDF2F7 0%, #EDF2F7 50%, #F4F4F4 50%, #F4F4F4 100%);
+}
+#areacliente .bloco-1 .title {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+  justify-content: center;
+}
+#areacliente .bloco-1 .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 48px;
+  padding: 72px 64px;
+  border-radius: 32px;
+  text-align: center;
+  background: #fff;
+}
+#areacliente .bloco-1 .wrapper a {
+  font-weight: 700;
+}
+@media (max-width: 1023px) {
+  #areacliente .bloco-1 {
+    padding: 50px 0;
+    background: #F4F4F4;
+  }
+  #areacliente .bloco-1 .title p {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  #areacliente .bloco-1 .wrapper {
+    margin-top: 32px;
+    padding: 32px;
+  }
+  #areacliente .bloco-1 .wrapper a {
+    word-wrap: break-word;
+  }
+}
+/* Bloco 2 */
+#areacliente .bloco-2 {
+  padding-bottom: 100px;
+  background: #EDF2F7;
+}
+#areacliente .bloco-2 .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+#areacliente .bloco-2 .btn-custom {
+  width: fit-content;
+  margin: 24px auto 0;
+  padding: 16px 32px;
+  border-radius: 40px;
+  text-decoration: none;
+  background: var(--clr-primary);
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+#areacliente .bloco-2 .btn-custom:hover {
+  background: #000;
+}
+#areacliente .bloco-2 .wrapper__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+}
+@media (max-width: 1023px) {
+  #areacliente .bloco-2 {
+    padding-bottom: 50px;
+  }
+  #areacliente .bloco-2 .wrapper {
+    padding-top: 50px;
+  }
+  #areacliente .bloco-2 .wrapper > p {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+  #areacliente .bloco-2 .btn-custom {
+    margin: 16px auto 0;
+  }
+  #areacliente .bloco-2 .wrapper__text {
+    padding-top: 16px;
+  }
+}

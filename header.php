@@ -23,17 +23,67 @@
 
   <nav class="navbar__header">
     <div class="container-custom">
-      <a href="<?php echo home_url(); ?>" class="logo">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo.svg" alt="Logo">
-      </a>
-      <?php
-      wp_nav_menu(array(
-        'theme_location' => 'principal',
-        'walker' => new Walker_Nav_Menu_Custom(),
-        'menu_class'     => 'header-menu text-uppercase',
-        'container'      => 'div',
-        'container_class' => 'header-nav col-6',
-      ));
-      ?>
+      <div class="left">
+        <a href="<?php echo home_url(); ?>" class="logo">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo.svg" alt="Logo">
+        </a>
+        <?php
+        wp_nav_menu(array(
+          'theme_location' => 'principal',
+          'walker' => new Walker_Nav_Menu_Custom(),
+          'menu_class'     => 'header-menu text-uppercase',
+          'container'      => 'div',
+          'container_class' => 'header-nav col-6',
+        ));
+        ?>
+      </div>
+      <div class="right">
+        <div class="btn__wrapper">
+          <a href="<?php echo home_url(); ?>/area-do-cliente/" class="btn-custom">Área do cliente</a>
+          <a href="<?php echo home_url(); ?>/fale-conosco/" class="btn-custom">Fale conosco</a>
+        </div>
+      </div>
+    </div>
+    <div class="navbar__mobile">
+      <div class="container-custom">
+        <a href="<?php echo home_url(); ?>" class="logo">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo.svg" alt="Logo">
+        </a>
+        <div class="mobile">
+          <svg width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1.5H25" stroke="#1A539E" stroke-width="2" stroke-linecap="round" />
+            <path d="M1 11.5H25" stroke="#1A539E" stroke-width="2" stroke-linecap="round" />
+            <path d="M1 21.5H25" stroke="#1A539E" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-mobile mobile">
+      <div class="wrapper-mobile">
+        <div class="topo">
+          <a href="<?php echo home_url(); ?>" class="logo">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo.svg" alt="Logo">
+          </a>
+          <div class="close-btn">
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 23.1177L23 1.11768" stroke="#1A539E" stroke-width="2" stroke-linecap="round" />
+              <path d="M23 23.1177L1 1.11768" stroke="#1A539E" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+        <?php
+        wp_nav_menu(array(
+          'theme_location' => 'principal',
+          'menu_class'     => 'header-menu text-uppercase',
+          'container'      => 'div',
+          'container_class' => 'header-nav col-6',
+        ));
+        ?>
+        <div class="btn__wrapper">
+          <a href="<?php echo home_url(); ?>/area-do-cliente/" class="btn-custom">Área do cliente</a>
+          <a href="<?php echo home_url(); ?>/fale-conosco/" class="btn-custom">Fale conosco</a>
+        </div>
+      </div>
     </div>
   </nav>

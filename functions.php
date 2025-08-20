@@ -56,6 +56,19 @@ function enqueue_single_empreendimento()
   }
 }
 
+function enqueue_areacliente()
+{
+  if (!wp_style_is('areacliente', 'enqueued')) {
+    wp_enqueue_style(
+      'areacliente',
+      get_template_directory_uri() . '/assets/css/areacliente.css',
+      array(),
+      null,
+      'all'
+    );
+  }
+}
+
 // Menus
 register_nav_menus([
   'principal' => 'Menu Principal',

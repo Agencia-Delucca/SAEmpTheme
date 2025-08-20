@@ -62,6 +62,54 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   ajustarMarginLeft();
   window.addEventListener("resize", ajustarMarginLeft);
+
+  // Menu mobile
+  const menu = document.querySelector(".navbar__header .menu-mobile");
+  const wrapper = document.querySelector(".navbar__header .wrapper-mobile");
+  const body = document.querySelector("body");
+  const btnToggle = document.querySelector(".navbar__header .navbar__mobile .mobile");
+  const btnClose = document.querySelector(".navbar__header .close-btn");
+  const links = document.querySelectorAll(".navbar__header .menu-mobile a");
+
+  // Abrir/fechar menu
+  function toggleMenuMobile() {
+    menu.classList.toggle("active");
+    wrapper.classList.toggle("active");
+    body.classList.toggle("active");
+  }
+
+  // Fechar menu
+  function closeMenuMobile() {
+    menu.classList.remove("active");
+    wrapper.classList.remove("active");
+    body.classList.remove("active");
+  }
+
+  // Abrir com botão de menu
+  btnToggle?.addEventListener("click", function (event) {
+    event.stopPropagation();
+    toggleMenuMobile();
+  });
+
+  // Fechar com botão X
+  btnClose?.addEventListener("click", function (event) {
+    event.stopPropagation();
+    closeMenuMobile();
+  });
+
+  // Fechar ao clicar fora do menu
+  menu?.addEventListener("click", function (event) {
+    if (!wrapper.contains(event.target)) {
+      closeMenuMobile();
+    }
+  });
+
+  // Fechar ao clicar em qualquer link
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      closeMenuMobile();
+    });
+  });
 });
 
 // Swipers
