@@ -411,3 +411,55 @@
   border-radius: 100%;
   background: #F4F4F4;
 }
+/* Banner Inferior */
+#single-empreendimento .bottom_banner {
+  position: relative;
+  margin: 100px 0 128px;
+}
+#single-empreendimento .bottom_banner .img__wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+}
+#single-empreendimento .bottom_banner .img__wrapper picture {
+  display: flex;
+}
+#single-empreendimento .bottom_banner .img__wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: all 500ms ease-in-out;
+}
+#single-empreendimento .bottom_banner:hover .img__wrapper img {
+  transform: scale(1.05);
+}
+#single-empreendimento .bottom_banner .infos__wrapper {
+  position: absolute;
+  top: 50%;
+  left: 64px;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+#single-empreendimento .bottom_banner .infos__wrapper h2 {
+  font-size: 3rem;
+  max-width: 450px;
+  color: var(--clr-primary);
+}
+#single-empreendimento .bottom_banner .infos__wrapper .cta {
+  display: flex;
+  width: fit-content;
+  padding: 16px 32px;
+  border-radius: 48px;
+  text-decoration: none;
+  background: var(--clr-primary);
+  color: #fff;
+  transition: all 300ms ease-in-out;
+}
+#single-empreendimento .bottom_banner .infos__wrapper .cta:hover {
+  background: #000;
+}

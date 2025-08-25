@@ -69,6 +69,19 @@ function enqueue_areacliente()
   }
 }
 
+function enqueue_parceiro()
+{
+  if (!wp_style_is('parceiro', 'enqueued')) {
+    wp_enqueue_style(
+      'parceiro',
+      get_template_directory_uri() . '/assets/css/parceiro.css',
+      array(),
+      null,
+      'all'
+    );
+  }
+}
+
 // Menus
 register_nav_menus([
   'principal' => 'Menu Principal',

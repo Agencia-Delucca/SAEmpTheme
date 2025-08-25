@@ -41,6 +41,14 @@
   #privacidade ol li::marker {
     font-weight: 700;
   }
+  @media (max-width: 1023px) {
+    #privacidade {
+      padding: 60px 0;
+    }
+    #privacidade .bloco {
+      padding: 40px 24px;
+    }
+  }
 </style>
 
 <?php get_template_part('template-parts/breadcrumb'); ?>

@@ -11,11 +11,22 @@ $infos = get_field('informacoes');
 $galeria = get_field('galeria');
 $plantas = get_field('plantas');
 $obras = get_field('obras');
+$finalizado = get_field('finalizado');
 
 // Secundarios
 $tour_360 = $infos['tour_360'];
 $destaques = $infos['destaques'];
 $descricao = $infos['texto'];
+
+// Externos
+$master_id = 70;
+$bottom_banner_empreendimentos = get_field('bottom_banner_empreendimentos', $master_id);
+$bn_img = $bottom_banner_empreendimentos['img'];
+$bn_img_mob = $bottom_banner_empreendimentos['img_mob'];
+$bn_alt = $bottom_banner_empreendimentos['alt'];
+$bn_title = $bottom_banner_empreendimentos['title'];
+$bn_link = $bottom_banner_empreendimentos['link'];
+$bn_cta = $bottom_banner_empreendimentos['cta'];
 ?>
 
 <?php get_template_part('template-parts/breadcrumb'); ?>
@@ -57,9 +68,9 @@ $descricao = $infos['texto'];
             </div>
           <?php endif; ?>
           <?php if ($obras) : ?>
-            <div class="item anchor" onclick="scrollToId('obras')">
+            <div class="item anchor" <?php if (!$finalizado) : ?>onclick="scrollToId('obras')" <?php endif; ?>>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icones/obras.svg" alt="Obras">
-              Acompanhe a obra
+              <?php echo ($finalizado) ?: 'Acompanhe a obra' ?>
             </div>
           <?php endif; ?>
           <div class="item infos">
@@ -156,10 +167,10 @@ $descricao = $infos['texto'];
   <?php endif; ?>
 
   <?php if ($plantas) : ?>
-    <div class="container-custom-sm" id="plantas">
-      <h2 class="title">Planta baixa</h2>
-      <section class="plantas">
-        <?php if (have_rows('plantas_tipos')): ?>
+    <?php if (have_rows('plantas_tipos')): ?>
+      <div class="container-custom-sm" id="plantas">
+        <h2 class="title">Planta baixa</h2>
+        <section class="plantas">
 
           <!-- Coluna da esquerda (Legendas) -->
           <div class="left">
@@ -239,9 +250,9 @@ $descricao = $infos['texto'];
               endwhile; ?>
             </div>
           </div>
-        <?php endif; ?>
-      </section>
-    </div>
+        </section>
+      </div>
+    <?php endif; ?>
   <?php endif; ?>
 
 
@@ -259,6 +270,27 @@ $descricao = $infos['texto'];
   <?php if ($obras) : ?>
     <div class="container-custom" id="obras">
 
+    </div>
+  <?php endif; ?>
+
+  <?php if ($bn_img) : ?>
+    <div class="container-custom">
+      <div class="bottom_banner">
+        <div class="img__wrapper">
+          <picture>
+            <source media="(max-width: 1023px)" srcset="<?php echo esc_url($bn_img_mob); ?>">
+            <img src="<?php echo esc_url($bn_img); ?>" alt="<?php echo esc_attr($bn_alt); ?>">
+          </picture>
+        </div>
+        <div class="infos__wrapper">
+          <h2>
+            <?php echo esc_html($bn_title); ?>
+          </h2>
+          <a href="<?php echo esc_url($bn_link); ?>&text=Olá, Gostaria de saber mais sobre o empreendimento <?php echo the_title(); ?>" class="cta" target="_blank">
+            <?php echo $bn_cta; ?>
+          </a>
+        </div>
+      </div>
     </div>
   <?php endif; ?>
 </div>
