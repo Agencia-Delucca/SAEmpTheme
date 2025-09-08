@@ -369,10 +369,9 @@ body.loaded #site-loader {
     display: flex;
     flex-direction: column;
     width: 90%;
-    max-width: 360px;
+    max-width: 320px;
     height: 100%;
-    gap: 32px;
-    padding: 32px;
+    padding: 20px 32px 32px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     background: #f4f4f4;
     transform: translateX(100%);
@@ -383,10 +382,33 @@ body.loaded #site-loader {
   }
   .navbar__header .wrapper-mobile .close-btn {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 20px;
+    right: 12px;
     width: 32px;
     height: 32px;
+  }
+  .navbar__header .wrapper-mobile .header-menu {
+    flex-direction: column;
+  }
+  .navbar__header .wrapper-mobile .menu-item-has-children {
+    flex-direction: column;
+    padding: 0 0 32px;
+  }
+  .navbar__header .wrapper-mobile .menu-item-has-children > div:first-of-type {
+    line-height: 1.5;
+    font-weight: bold;
+  }
+  .navbar__header .wrapper-mobile .menu-item-has-children > div:first-of-type::after {
+    display: none;
+  }
+  .navbar__header .wrapper-mobile .menu-item-has-children ul {
+    list-style: none;
+  }
+  .navbar__header .wrapper-mobile .sub-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
   }
 }
 /* SWIPER */

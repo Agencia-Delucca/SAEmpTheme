@@ -62,9 +62,9 @@
     <div class="menu-mobile mobile">
       <div class="wrapper-mobile">
         <div class="topo">
-          <a href="<?php echo home_url(); ?>" class="logo">
+          <!-- <a href="<?php echo home_url(); ?>" class="logo">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo.svg" alt="Logo">
-          </a>
+          </a> -->
           <div class="close-btn">
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 23.1177L23 1.11768" stroke="#1A539E" stroke-width="2" stroke-linecap="round" />
