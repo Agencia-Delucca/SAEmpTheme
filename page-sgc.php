@@ -12,6 +12,7 @@ $master_depoimentos = 425;
 // Post
 $topo = get_field('topo');
 $empresas_parceiras = get_field('empresas_parceiras');
+$middle_banner = get_field('middle_banner');
 ?>
 
 <div id="sgc">
@@ -66,6 +67,29 @@ $empresas_parceiras = get_field('empresas_parceiras');
         </div>
       <?php endwhile; ?>
     </section>
+  <?php endif; ?>
+
+  <?php if ($middle_banner) : ?>
+    <div id="middle_banner">
+      <div class="container-custom-sm">
+        <div class="middle_banner__wrapper">
+          <div class="img__wrapper">
+            <picture>
+              <source media="(max-width: 1023px)" srcset="<?php echo esc_url($middle_banner['imagem_m']['url']); ?>">
+              <img src="<?php echo esc_url($middle_banner['imagem']['url']); ?>" alt="<?php echo esc_attr($bn_alt); ?>">
+            </picture>
+          </div>
+          <div class="infos__wrapper">
+            <h2>
+              <?php echo esc_html($middle_banner['titulo']); ?>
+            </h2>
+            <p>
+              <?php echo ($middle_banner['texto']); ?>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   <?php endif; ?>
 
   <div id="empresas-parceiras">
