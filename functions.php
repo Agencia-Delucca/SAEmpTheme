@@ -82,6 +82,19 @@ function enqueue_parceiro()
   }
 }
 
+function enqueue_sgc()
+{
+  if (!wp_style_is('sgc', 'enqueued')) {
+    wp_enqueue_style(
+      'sgc',
+      get_template_directory_uri() . '/assets/css/sgc.css',
+      array(),
+      null,
+      'all'
+    );
+  }
+}
+
 // Menus
 register_nav_menus([
   'principal' => 'Menu Principal',

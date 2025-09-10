@@ -67,7 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const menu = document.querySelector(".navbar__header .menu-mobile");
   const wrapper = document.querySelector(".navbar__header .wrapper-mobile");
   const body = document.querySelector("body");
-  const btnToggle = document.querySelector(".navbar__header .navbar__mobile .mobile");
+  const btnToggle = document.querySelector(
+    ".navbar__header .navbar__mobile .mobile"
+  );
   const btnClose = document.querySelector(".navbar__header .close-btn");
   const links = document.querySelectorAll(".navbar__header .menu-mobile a");
 
@@ -156,6 +158,23 @@ document.addEventListener("DOMContentLoaded", function () {
     navigation: {
       nextEl: "#single-empreendimento #galeria .swiper-button-next",
       prevEl: "#single-empreendimento #galeria .swiper-button-prev",
+    },
+  });
+
+  const depoimentos = new Swiper("#sgc .depoimentos__slide.swiper", {
+    loop: true,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      992: {
+        slidesPerView: 2,
+      },
+    },
+    spaceBetween: 16,
+    navigation: {
+      nextEl: "#sgc .swiper-button-next",
+      prevEl: "#sgc .swiper-button-prev",
     }
   });
 });
