@@ -36,7 +36,11 @@
   flex-direction: column;
   gap: 16px;
 }
-#single-empreendimento #banner .wrapper .container-custom-sm .wpcf7-response-output {
+#single-empreendimento
+  #banner
+  .wrapper
+  .container-custom-sm
+  .wpcf7-response-output {
   margin: 8px 0 0;
   padding: 8px 16px;
   border-radius: 24px;
@@ -51,7 +55,7 @@
   padding: 16px;
   border-radius: 16px;
   border: none;
-  background: #F2F2F2;
+  background: #f2f2f2;
 }
 #single-empreendimento #banner .wrapper .forms .wpcf7-submit {
   display: flex;
@@ -62,7 +66,7 @@
   font-size: 20px !important;
   color: #fff;
   background: var(--clr-primary);
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 #single-empreendimento #banner .wrapper .forms .wpcf7-submit:hover {
@@ -168,7 +172,14 @@
   width: 24px;
   height: 24px;
 }
-#single-empreendimento #infos .wrapper .right .item.infos .destaque .imagem img {
+#single-empreendimento
+  #infos
+  .wrapper
+  .right
+  .item.infos
+  .destaque
+  .imagem
+  img {
   max-width: 100%;
   height: 100%;
 }
@@ -182,7 +193,12 @@
   max-width: calc(40% - 8px);
   padding: 64px 32px;
 }
-#single-empreendimento #infos .wrapper .right .item.infos .destaque:first-of-type {
+#single-empreendimento
+  #infos
+  .wrapper
+  .right
+  .item.infos
+  .destaque:first-of-type {
   font-weight: 700;
 }
 /* TOUR 360 */
@@ -222,39 +238,40 @@
   height: 100%;
 }
 /* END TOUR 360 */
-#single-empreendimento .swiper {
+/* GALERIA */
+#single-empreendimento #galeria .swiper {
   margin-top: 50px;
 }
-#single-empreendimento .swiper-wrapper {
+#single-empreendimento #galeria .swiper-wrapper {
   overflow: hidden;
   height: 600px;
   border-radius: 32px;
 }
-#single-empreendimento .swiper-slide.destaque {
+#single-empreendimento #galeria .swiper-slide.destaque {
   position: relative;
   height: 100%;
 }
-#single-empreendimento .swiper-slide.destaque img {
+#single-empreendimento #galeria .swiper-slide.destaque img {
   width: 100%;
   display: block;
 }
-#single-empreendimento .swiper-slide.duplo .duas-imagens {
+#single-empreendimento #galeria .swiper-slide.duplo .duas-imagens {
   display: flex;
   gap: 16px;
   height: 100%;
-  background: #F4F4F4;
+  background: #f4f4f4;
 }
-#single-empreendimento .img-bloco {
+#single-empreendimento #galeria .img-bloco {
   flex: 1;
   position: relative;
   height: 100%;
 }
-#single-empreendimento .img-bloco img {
+#single-empreendimento #galeria .img-bloco img {
   width: 100%;
   display: block;
   border-radius: 32px;
 }
-#single-empreendimento .legenda {
+#single-empreendimento #galeria .legenda {
   position: absolute;
   z-index: 1;
   top: 32px;
@@ -268,11 +285,11 @@
   background: #fff;
   color: #000;
 }
-#single-empreendimento .legenda h3 {
+#single-empreendimento #galeria .legenda h3 {
   font-size: 20px;
   font-weight: 400;
 }
-#single-empreendimento .legenda p {
+#single-empreendimento #galeria .legenda p {
   font-size: 16px;
 }
 /* END GALERIA */
@@ -337,7 +354,7 @@
   gap: 16px;
   padding: 0 16px 16px 0;
   border-radius: 0 0 16px 0;
-  background: #F4F4F4;
+  background: #f4f4f4;
   z-index: 1;
 }
 #single-empreendimento .plantas__botoes:before {
@@ -352,7 +369,7 @@
 }
 #single-empreendimento .plantas__botoes:before,
 #single-empreendimento .plantas__botoes:after {
-  content: '';
+  content: "";
   position: absolute;
   width: 24px;
   height: 24px;
@@ -368,12 +385,12 @@
   font-size: 18px;
   text-transform: uppercase;
   color: #fff;
-  background: #0000004D;
-  transition: background .3s ease-in-out;
+  background: #0000004d;
+  transition: background 0.3s ease-in-out;
   cursor: pointer;
 }
 #single-empreendimento .plantas__botoes button.active {
-  background: #000000CC;
+  background: #000000cc;
 }
 #single-empreendimento .right .planta-item .planta-imagem {
   display: flex;
@@ -409,7 +426,195 @@
   width: 54px;
   height: 54px;
   border-radius: 100%;
-  background: #F4F4F4;
+  background: #f4f4f4;
+}
+/* Andamento Obra */
+#single-empreendimento .obras__wrapper {
+  display: flex;
+  gap: 16px;
+}
+#single-empreendimento .obras__andamento {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 65%;
+  width: 100%;
+}
+#single-empreendimento .obras__andamento h2 {
+  font-weight: 400;
+}
+#single-empreendimento .obras__grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 32px;
+  gap: 32px 16px;
+  border-radius: 16px;
+  background: #fff;
+}
+#single-empreendimento .obras__item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  text-align: center;
+  min-width: 160px;
+  width: calc(20% - 16px);
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position-x: 1rem;
+  }
+}
+
+#obras
+  .obras__item
+  .progress
+  .progress-bar-outer
+  .number
+  .progress-bar-inner {
+  font-weight: 600;
+  font-size: 32px;
+  display: none;
+}
+
+#obras
+  .obras__item
+  .progress
+  .progress-bar-outer
+  .number {
+  font-weight: 600;
+  font-size: 32px;
+  display: block;
+  color: #000;
+}
+
+#obras .obras__item .progress {
+  display: flex;
+  height: 160px;
+  width: 160px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: baseline;
+}
+#obras
+  .obras__item
+  .progress
+  .progress-bar-outer {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#obras
+  .obras__item
+  .progress
+  .progress-bar-outer
+  .progress-bar-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+circle {
+  fill: none;
+  stroke-width: 15px;
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+}
+.progress svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar {
+    transition: none;
+  }
+}
+.progress-bar-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+.progress-bar-animated {
+  animation: 1s linear infinite progress-bar-stripes;
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar-animated {
+    animation: none;
+  }
+}
+
+#single-empreendimento .obras__galeria {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 35%;
+  width: 100%;
+}
+#single-empreendimento .obras__galeria h2 {
+  font-weight: 400;
+}
+#single-empreendimento .obras__galeria-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+#single-empreendimento .obras__galeria .swiper {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+}
+#single-empreendimento .obras__galeria .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#single-empreendimento .obras__galeria .img__wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+#single-empreendimento .obras__galeria .swiper-slide img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#single-empreendimento .obras__entrega {
+  padding: 16px;
+  font-weight: 700;
+  border-radius: 16px;
+  background: #fff;
 }
 /* Banner Inferior */
 #single-empreendimento .bottom_banner {

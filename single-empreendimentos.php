@@ -17,6 +17,7 @@ $finalizado = get_field('finalizado');
 $tour_360 = $infos['tour_360'];
 $destaques = $infos['destaques'];
 $descricao = $infos['texto'];
+$andamento_obra = $obras['andamento'];
 
 // Externos
 $master_id = 70;
@@ -267,32 +268,105 @@ $bn_cta = $bottom_banner_empreendimentos['cta'];
     </div>
   <?php endif; ?>
 
-  <?php if ($obras) : ?>
-    <div class="container-custom" id="obras">
+  <?php if ($obras && $andamento_obra) : ?>
+    <section class="container-custom" id="obras">
+      <div class="obras__wrapper">
+        <div class="obras__andamento">
+          <h2>Andamento da Obra</h2>
+          <div class="obras__grid">
+            <?php
+            $i = 0;
+            foreach ($obras['andamento'] as $step):
+              $pct = intval($step['porcentagem']);
+              $i++; // incrementa a cada item
+            ?>
+              <div class="obras__item">
+                <div class="progress">
+                  <div class="progress-bar-outer" style="background: <?= esc_attr($obras['cor_linha']); ?>;">
+                    <div class="progress-bar-inner">
+                      <div class="number" data-circle-id="circle<?= $i; ?>">
+                        <?= $pct ?>%
+                      </div>
+                    </div>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                    <circle
+                      stroke="<?= esc_attr($obras['cor_progress']); ?>"
+                      cx="80" cy="80" r="70" stroke-linecap="round"
+                      id="circle<?= $i; ?>" />
+                  </svg>
+                </div>
+                <p><?= esc_html($step['item']); ?></p>
+              </div>
+            <?php endforeach; ?>
 
-    </div>
-  <?php endif; ?>
-
-  <?php if ($bn_img) : ?>
-    <div class="container-custom">
-      <div class="bottom_banner">
-        <div class="img__wrapper">
-          <picture>
-            <source media="(max-width: 1023px)" srcset="<?php echo esc_url($bn_img_mob); ?>">
-            <img src="<?php echo esc_url($bn_img); ?>" alt="<?php echo esc_attr($bn_alt); ?>">
-          </picture>
+          </div>
         </div>
-        <div class="infos__wrapper">
-          <h2>
-            <?php echo esc_html($bn_title); ?>
-          </h2>
-          <a href="<?php echo esc_url($bn_link); ?>&text=Olá, Gostaria de saber mais sobre o empreendimento <?php echo the_title(); ?>" class="cta" target="_blank">
-            <?php echo $bn_cta; ?>
-          </a>
+
+        <div class="obras__galeria">
+          <h2>Galeria</h2>
+          <div class="obras__galeria-wrapper">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <?php
+                $i = 0;
+                foreach ($obras['galeria'] as $img):
+                  // abre o slide a cada 2 imagens
+                  if ($i % 2 === 0): ?>
+                    <div class="swiper-slide">
+                    <?php endif; ?>
+                    <div class="img__wrapper">
+                      <a href="<?= esc_url($img); ?>" data-fancybox="gallery">
+                        <img src="<?= esc_url($img); ?>" alt="Imagem da obra">
+                      </a>
+                    </div>
+
+                    <?php
+                    $i++;
+                    // fecha o slide a cada 2 imagens
+                    if ($i % 2 === 0): ?>
+                    </div>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+
+                <?php
+                // se sobrar uma imagem sem par, fecha a div aberta
+                if ($i % 2 !== 0): ?>
+              </div>
+            <?php endif; ?>
+            </div>
+          </div>
+          <?php if (!empty($obras['entrega'])): ?>
+            <div class="obras__entrega">
+              Entrega prevista para <?= esc_html($obras['entrega']); ?>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
+</div>
+</section>
+<?php endif; ?>
+
+<?php if ($bn_img) : ?>
+  <div class="container-custom">
+    <div class="bottom_banner">
+      <div class="img__wrapper">
+        <picture>
+          <source media="(max-width: 1023px)" srcset="<?php echo esc_url($bn_img_mob); ?>">
+          <img src="<?php echo esc_url($bn_img); ?>" alt="<?php echo esc_attr($bn_alt); ?>">
+        </picture>
+      </div>
+      <div class="infos__wrapper">
+        <h2>
+          <?php echo esc_html($bn_title); ?>
+        </h2>
+        <a href="<?php echo esc_url($bn_link); ?>&text=Olá, Gostaria de saber mais sobre o empreendimento <?php echo the_title(); ?>" class="cta" target="_blank">
+          <?php echo $bn_cta; ?>
+        </a>
+      </div>
     </div>
-  <?php endif; ?>
+  </div>
+<?php endif; ?>
 </div>
 
 <script>
@@ -316,6 +390,87 @@ $bn_cta = $bottom_banner_empreendimentos['cta'];
         document.getElementById("planta-legenda-" + index).classList.add("active");
       });
     });
+
+    // Progress bar (SCRIPT SITE ANTIGO SA BY LUCAS)
+    const circleElements = document.querySelectorAll('[id^="circle"]');
+    const numberElements = document.querySelectorAll('.number');
+
+    function updateProgress(circleId, numberElement) {
+      const circle = document.getElementById(circleId);
+      const percentageText = numberElement.textContent.trim();
+      const percentage = parseFloat(percentageText);
+
+      if (!isNaN(percentage) && percentage >= 0) {
+        const circumference = 2 * Math.PI * circle.getAttribute('r');
+        const offset = circumference * (1 - (percentage / 100));
+
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = circumference;
+        circle.animate(
+          [
+            // keyframes
+            {
+              strokeDashoffset: offset
+            },
+          ], {
+            // timing options
+            duration: 2,
+            fill: 'forwards',
+            easing: 'linear',
+          }
+        );
+
+        animateCounter(numberElement, percentage);
+      }
+    }
+
+    function animateCounter(numberElement, targetPercentage) {
+      let currentPercentage = 0;
+      const animationDuration = 2000; // Tempo de duração da animação em milissegundos
+      const startTime = performance.now();
+
+      numberElement.style.display = 'block';
+
+      function updateCounter(timestamp) {
+        const elapsedTime = timestamp - startTime;
+
+        if (elapsedTime >= animationDuration) {
+          numberElement.textContent = targetPercentage.toFixed(0) + '%';
+        } else {
+          currentPercentage = (elapsedTime / animationDuration) * targetPercentage;
+          numberElement.textContent = currentPercentage.toFixed(0) + '%';
+          requestAnimationFrame(updateCounter);
+        }
+      }
+
+      requestAnimationFrame(updateCounter);
+    }
+
+    function checkAndActivate() {
+      const anchor4Element = document.getElementById('obras');
+      const windowHeight = window.innerHeight;
+      const scrollPosition = window.scrollY;
+
+      if (anchor4Element) {
+        const anchor4Offset = anchor4Element.offsetTop;
+
+        if (scrollPosition + windowHeight >= anchor4Offset) {
+          numberElements.forEach((numberElement) => {
+            const circleId = numberElement.getAttribute('data-circle-id');
+            updateProgress(circleId, numberElement);
+
+            const observer = new MutationObserver(() => updateProgress(circleId, numberElement));
+            observer.observe(numberElement, {
+              characterData: true
+            });
+          });
+          window.removeEventListener('scroll', checkAndActivate);
+        }
+      }
+    }
+    checkAndActivate();
+
+    window.addEventListener('scroll', checkAndActivate);
   });
 </script>
 

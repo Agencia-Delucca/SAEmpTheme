@@ -161,6 +161,19 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
+  const galeriaObrasSlider = new Swiper(
+    "#single-empreendimento .obras__galeria .swiper",
+    {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 16,
+      navigation: {
+        nextEl: "#single-empreendimento .obras__galeria .swiper-button-next",
+        prevEl: "#single-empreendimento .obras__galeria .swiper-button-prev",
+      },
+    }
+  );
+
   const depoimentos = new Swiper("#sgc .depoimentos__slide.swiper", {
     loop: true,
     breakpoints: {

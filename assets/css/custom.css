@@ -541,6 +541,9 @@ footer .header-menu .menu-item a {
   display: flex;
   text-decoration: none;
 }
+footer .header-menu .sub-menu a:hover {
+  text-decoration: underline;
+}
 footer .showroom .title,
 footer .contato .title {
   margin-bottom: 16px;
@@ -568,6 +571,10 @@ footer .showroom .item .text a,
 footer .contato .item .text a {
   line-height: 1.5;
   text-decoration: none;
+}
+footer .showroom .item .text a:hover,
+footer .contato .item .text a:hover {
+  text-decoration: underline;
 }
 @media (max-width: 1023px) {
   footer .links {
